@@ -3,71 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEWI PLENGER</title>
+<title>Untuk DEWI PLENGER</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  
   body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #fff5f5;
-    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a0000, #3d0000);
+    font-family: 'Poppins', sans-serif;
+    perspective: 1500px;
   }
   
-  .container {
-    text-align: center;
+  .instruction {
+    position: absolute;
+    top: 30px;
+    color: #d4af37;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: blink 2s infinite;
+  }
+  
+  @keyframes blink {
+    50% { opacity: 1; }
+  }
+  
+  .card {
     position: relative;
-    padding: 40px 60px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 350px;
+    height: 500px;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
   }
   
-  h1 {
-    font-size: 4rem;
+  .card.opened {
+    transform: rotateY(-180deg);
+  }
+  
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  
+  /* COVER DEPAN */
+  .card-front {
+    background: linear-gradient(135deg, #2a0000, #4d0000);
+    border: 2px solid #d4af37;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-front h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-bottom: 20px;
+  }
+  
+  .flower-cover {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 10px rgba(193, 18, 31, 0.8));
+    animation: pulse 3s infinite;
+  }
+  
+  @keyframes pulse {
+    50% { transform: scale(1.05); }
+  }
+  
+  /* ISI DALAM */
+  .card-inside {
+    background: #fff9f9;
+    transform: rotateY(180deg);
+    padding: 40px 30px;
+    text-align: center;
+    border: 2px solid #d4af37;
+  }
+  
+  .card-inside h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    background: linear-gradient(to right, #c1121f, #8b0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    margin: 15px 0;
+  }
+  
+  .card-inside .message {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 20px 0;
+  }
+  
+  .card-inside .from {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
     color: #c1121f;
-    margin: 0;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 0px #ffccd5;
+    margin-top: 30px;
   }
   
-  /* Bunga pojok kiri atas */
-  .flower-tl {
+  /* Bunga pojok di dalam */
+  .corner-flower {
     position: absolute;
-    top: -20px;
-    left: -20px;
-    font-size: 3rem;
-    transform: rotate(-20deg);
+    width: 80px;
+    height: 80px;
+    opacity: 0.9;
   }
+  .corner-flower.tl { top: -15px; left: -15px; }
+  .corner-flower.br { bottom: -15px; right: -15px; transform: rotate(180deg); }
   
-  /* Bunga pojok kanan bawah */
-  .flower-br {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    font-size: 3rem;
-    transform: rotate(15deg);
-  }
-  
-  /* Bunga kecil di tengah */
-  .flower-center {
-    font-size: 1.5rem;
-    margin: 10px 0;
-  }
-  
-  /* Kelopak pakai emoji biar gampang */
-  .flower::after {
-    content: "🌹";
+  .corner-flower svg {
+    filter: drop-shadow(0 0 5px rgba(193, 18, 31, 0.6));
   }
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="flower flower-tl"></div>
-    <h1>DEWI PLENGER</h1>
-    <div class="flower flower-center"></div>
-    <div class="flower flower-br"></div>
+  <div class="instruction">Klik kartu untuk membuka ✨</div>
+  
+  <div class="card" onclick="this.classList.toggle('opened')">
+    <!-- COVER DEPAN -->
+    <div class="card-face card-front">
+      <h2>Special For You</h2>
+      <div class="flower-cover">
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <radialGradient id="redGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ff4d6d"/>
+              <stop offset="100%" stop-color="#c1121f"/>
+            </radialGradient>
+            <radialGradient id="goldGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f9f295"/>
+              <stop offset="100%" stop-color="#d4af37"/>
+            </radialGradient>
+          </defs>
+          <g fill="url(#redGrad)">
+            <ellipse cx="50" cy="20" rx="15" ry="25" transform="rotate(0 50 50)"/>
+            <ellipse cx="50" cy="20" rx="15" ry="25" transform="rotate(72 50 50)"/>
+            <ellipse cx="50" cy="20" rx="15" ry="25" transform="rotate(144 50 50)"/>
+            <ellipse cx="50" cy="20" rx="15" ry="25" transform="rotate(216 50 50)"/>
+            <ellipse cx="50" cy="20" rx="15" ry="25" transform="rotate(288 50 50)"/>
+          </g>
+          <circle cx="50" cy="50" r="8" fill="url(#goldGrad)"/>
+        </svg>
+      </div>
+      <p style="color:#d4af37; font-size:0.8rem; margin-top:20px;">Ketuk untuk membuka</p>
+    </div>
+    
+    <!-- ISI DALAM -->
+    <div class="card-face card-inside">
+      <!-- Bunga pojok -->
+      <div class="corner-flower tl">
+        <svg viewBox="0 0 100 100">
+          <g fill="url(#redGrad)">
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(0 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(72 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(144 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(216 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(288 50 50)"/>
+          </g>
+          <circle cx="50" cy="50" r="6" fill="url(#goldGrad)"/>
+        </svg>
+      </div>
+      
+      <div class="corner-flower br">
+        <svg viewBox="0 0 100 100">
+          <g fill="url(#redGrad)">
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(0 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(72 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(144 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(216 50 50)"/>
+            <ellipse cx="50" cy="25" rx="12" ry="20" transform="rotate(288 50 50)"/>
+          </g>
+          <circle cx="50" cy="50" r="6" fill="url(#goldGrad)"/>
+        </svg>
+      </div>
+      
+      <h1>DEWI PLENGER</h1>
+      <div style="color:#c1121f; font-size:1.5rem;">🌹</div>
+      
+      <div class="message">
+        Semoga hari-harimu selalu mekar<br>
+        seindah mawar merah yang tak pernah layu.<br><br>
+        Terima kasih telah menjadi sosok<br>
+        yang selalu menginspirasi.
+      </div>
+      
+      <div class="from">With Love</div>
+    </div>
   </div>
+
+<script>
+  // Biar bisa ditutup lagi kalau di klik
+  document.querySelector('.card').addEventListener('click', function() {
+    this.classList.toggle('opened');
+  });
+</script>
 </body>
 </html>
