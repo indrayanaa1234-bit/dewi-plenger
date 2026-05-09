@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEWI PLENGER</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #fff5f5;
+    font-family: 'Georgia', serif;
+  }
+  
+  .container {
+    text-align: center;
+    position: relative;
+    padding: 40px 60px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    font-size: 4rem;
+    color: #c1121f;
+    margin: 0;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0px #ffccd5;
+  }
+  
+  /* Bunga pojok kiri atas */
+  .flower-tl {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 3rem;
+    transform: rotate(-20deg);
+  }
+  
+  /* Bunga pojok kanan bawah */
+  .flower-br {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    font-size: 3rem;
+    transform: rotate(15deg);
+  }
+  
+  /* Bunga kecil di tengah */
+  .flower-center {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  /* Kelopak pakai emoji biar gampang */
+  .flower::after {
+    content: "🌹";
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="flower flower-tl"></div>
+    <h1>DEWI PLENGER</h1>
+    <div class="flower flower-center"></div>
+    <div class="flower flower-br"></div>
+  </div>
+</body>
+</html>
